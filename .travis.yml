@@ -1,18 +1,20 @@
 language: node_js
 node_js:
-  - 'lts/*'
+- lts/*
 script:
-  - set -e
-
-  - echo 'Checking for missing change logs...' && echo -en 'travis_fold:start:change\\r'
-  - git fetch origin master:refs/remotes/origin/master -a
-  - node common/scripts/install-run-rush.js change -v
-  - echo -en 'travis_fold:end:change\\r'
-
-  - echo 'Installing...' && echo -en 'travis_fold:start:install\\r'
-  - node common/scripts/install-run-rush.js install
-  - echo -en 'travis_fold:end:install\\r'
-
-  - echo 'Building...' && echo -en 'travis_fold:start:build\\r'
-  - node common/scripts/install-run-rush.js rebuild --verbose
-  - echo -en 'travis_fold:end:build\\r'
+- set -e
+- echo 'Checking for missing change logs...' && echo -en 'travis_fold:start:change\\r'
+- git fetch origin master:refs/remotes/origin/master -a
+- node common/scripts/install-run-rush.js change -v
+- echo -en 'travis_fold:end:change\\r'
+- echo 'Installing...' && echo -en 'travis_fold:start:install\\r'
+- node common/scripts/install-run-rush.js install
+- echo -en 'travis_fold:end:install\\r'
+- echo 'Building...' && echo -en 'travis_fold:start:build\\r'
+- node common/scripts/install-run-rush.js rebuild --verbose
+- echo -en 'travis_fold:end:build\\r'
+- echo -en 'NPM_AUTH_TOKEN'
+- echo 'second version $NPM_AUTH_TOKEN'
+env:
+  global:
+    secure: OqA5gyRJCHGp4+tryh1GWAokzXTOpLEjqXtXg+pAUjEfXDf9vXsGGixSIdFe/ic+j64adT2ms+R9RGaNTHwQfo2jH9/K4aentrZ9k0kNI8/SPMhturube+XWZNrXYa371myZAMZ7ukBYSIMUqE0sEMmH65UHmkUxy1k6Vg1oM6qt9R7T6iIsUN8HePEv9bG/UgLE36KqyaUpPcOFDLJ/kTm+sAPJmrqJ3byyTQ9jBjU0/nx9F4yxfRR8uI81FW0vadW16rCjAw8X/qgqdw0+5dV8kWq7lgXKqMGum3DYxK1z39ziT2Fc7Q+HPCh62ryAhZG0cjSg41A+9eyG54BVAv+p9p5NIbEi1pvnKbZVDgZLqiV+1F+UOByZXlT97HxDUrQHA+xP6Nvp8gWk0khJp+8LJ9bO4YFZftQKD2V/gzgI6hGOTnhnRh5nbgaZ9lxqmLYOvEVpq0E+8YRV3lHhj3MwQRg9n3ocOvkCu0WV9h5euM48AZ4SLJ/8espt9oe1GarnySRwQS9l8wPlQ+PlahgPiEsok0hBmel2YMZX4Wi8vpiDpc3joKzp1jaFc4mXgUY2k5OMm5GjJykxgP/uBf+Kr+6zklPcOBDWLMx5oNBUT4ciokRyoYXOPfN3nSo9Ncflts1szaT/mw/0KJVJrFYRBsdDh/jFaqHiqLxJeH8=
