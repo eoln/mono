@@ -1,6 +1,5 @@
 {
   "name": "@eoln/iz",
-  "private": "false",
   "version": "1.0.2",
   "description": "eoln's type recognition utility",
   "main": "dist/index.js",
