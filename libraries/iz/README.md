@@ -5,6 +5,7 @@
 npm install @eoln/iz --save
 ```
 
+
 # TL;DR
 run time type/class discovery by value inspection  
 and custom class checkers registry (scoped)
