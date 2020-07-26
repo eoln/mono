@@ -105,3 +105,6 @@ dist
 
 # Rush temporary folder
 common/temp
+
+# Rush hidden folder
+.rush/
