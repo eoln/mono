@@ -1,0 +1,17 @@
+{
+  "name": "@eoln/iz",
+  "entries": [
+    {
+      "version": "1.0.6",
+      "tag": "@eoln/iz_v1.0.6",
+      "date": "Sun, 26 Jul 2020 14:16:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "test 4"
+          }
+        ]
+      }
+    }
+  ]
+}
