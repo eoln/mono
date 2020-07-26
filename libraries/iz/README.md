@@ -10,7 +10,6 @@ npm install @eoln/iz --save
 run time type/class discovery by value inspection  
 and custom class checkers registry (scoped)
 
-
 # usage examples:
 
 ```coffee
