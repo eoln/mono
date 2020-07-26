@@ -2,6 +2,18 @@
   "name": "@eoln/iz",
   "entries": [
     {
+      "version": "0.1.0",
+      "tag": "@eoln/iz_v0.1.0",
+      "date": "Sun, 26 Jul 2020 13:38:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "minor change"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.4",
       "tag": "@eoln/iz_v0.0.4",
       "date": "Sun, 26 Jul 2020 13:37:24 GMT",
