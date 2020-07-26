@@ -2,6 +2,23 @@
   "name": "@eoln/iz",
   "entries": [
     {
+      "version": "1.0.7",
+      "tag": "@eoln/iz_v1.0.7",
+      "date": "Sun, 26 Jul 2020 14:34:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "test 6",
+            "author": "Paweł Marzec <2881004+eoln@users.noreply.github.com>",
+            "commit": "593de39e9491a5a4253dd3e64d64043e3ad49097"
+          },
+          {
+            "comment": "ggg"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.6",
       "tag": "@eoln/iz_v1.0.6",
       "date": "Sun, 26 Jul 2020 14:16:30 GMT",
