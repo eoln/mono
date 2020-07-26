@@ -1,6 +1,13 @@
 # Change Log - @eoln/iz
 
-This log was last generated on Sun, 26 Jul 2020 13:35:03 GMT and should not be manually modified.
+This log was last generated on Sun, 26 Jul 2020 13:37:24 GMT and should not be manually modified.
+
+## 0.0.4
+Sun, 26 Jul 2020 13:37:24 GMT
+
+### Patches
+
+- try set-access-level public
 
 ## 0.0.3
 Sun, 26 Jul 2020 13:35:03 GMT
