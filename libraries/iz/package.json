@@ -1,0 +1,43 @@
+{
+  "name": "@eoln/iz",
+  "private": "false",
+  "version": "0.0.1",
+  "description": "eoln's type recognition utility",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "coffee --output dist/ --compile src/",
+    "prepare": "npm run build && npm test",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "author": "@eoln",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/eoln/mono/issues"
+  },
+  "homepage": "https://github.com/eoln/mono/libraries/is#readme",
+  "dependencies": {
+    "coffeescript": "^2.5.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "babel-jest": "^26.1.0",
+    "jest": "^26.1.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "jsx",
+      "node",
+      "coffee"
+    ],
+    "testMatch": [
+      "**/?(*.)+(spec|test).(js|coffee)?(x)"
+    ],
+    "transformIgnorePatterns": [],
+    "transform": {
+      "^.+\\.coffee$": "./tests/preprocessor.js"
+    }
+  }
+}
