@@ -52,6 +52,7 @@ exports.register = ( x, scope ) ->
 #
 exports.not = {}
 
+
 #
 # js (native) values
 #
@@ -69,6 +70,7 @@ jsValues = [
     Symbol()            # is.Symbol
     undefined           # is.Undefined
 ]
+
 
 #
 # register js(native) types in global scope
