@@ -2,7 +2,7 @@ iz = require '../src/iz'
 
 
 describe 'iz', () ->
-    # map from value to type
+    # map from value to javascript native types
     js = [
         { v: [],                t: 'Array' }
         { v: Array,             t: 'Function' }
