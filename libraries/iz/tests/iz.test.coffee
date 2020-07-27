@@ -1,5 +1,6 @@
 iz = require '../src/iz'
 
+
 describe 'iz', () ->
     # map from value to type
     js = [
