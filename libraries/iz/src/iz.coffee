@@ -20,15 +20,15 @@ exports.register = ( x, scope ) ->
     root = @
 
     # init scope if necessary
-    if scope?.length > 0
+    if scope?.length
 
         # throw when scope conflicts with js native types
         # below in this file the js native types are registered
-        if @[scope]? and 'Function' == typeof @[scope]
+        if @[scope]? and 'Function' is typeof @[scope]
             throw new Error "@eoln/is.register: scope `#{scope}` conflicts"
         
         # initialize scope with negation section
-        root[scope] = {not:{}} unless root[scope]?
+        root[scope] = { not: {} } unless root[scope]?
 
         # update root pointer
         root = root[scope]
@@ -38,10 +38,10 @@ exports.register = ( x, scope ) ->
     #return @ if root[nx]?
 
     # create type checker at root pointer
-    root[nx] = (y) => nx == @name y
+    root[nx] = (y) => nx is @name y
 
     # create negated version
-    root.not[nx] = (y) => nx != @name y
+    root.not[nx] = (y) => nx isnt @name y
 
     @
 
