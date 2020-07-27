@@ -1,6 +1,13 @@
 # Change Log - @eoln/iz
 
-This log was last generated on Mon, 27 Jul 2020 12:03:56 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jul 2020 12:20:42 GMT and should not be manually modified.
+
+## 1.1.0
+Mon, 27 Jul 2020 12:20:42 GMT
+
+### Minor changes
+
+- chore: move coffeescript to devDependenices
 
 ## 1.0.9
 Mon, 27 Jul 2020 12:03:56 GMT
