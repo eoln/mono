@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@eoln/iz",
-      "comment": "chore: move coffeescript to devDependenices",
-      "type": "minor"
+      "comment": "fix travis skip, sync iz version with npm",
+      "type": "patch"
     }
   ],
   "packageName": "@eoln/iz",
