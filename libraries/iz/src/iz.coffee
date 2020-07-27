@@ -46,7 +46,6 @@ exports.register = ( x, scope ) ->
     @
 
 
-
 #
 # 'not' enables negation of checkers
 #
