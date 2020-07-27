@@ -21,6 +21,7 @@ script:
 deploy:
   provider: script
   script: node common/scripts/install-run-rush.js publish --target-branch master --publish --npm-auth-token $NPM_AUTH_TOKEN --set-access-level public --apply --add-commit-details
+  skip_cleanup: true
   on:
     branch: master
 
