@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@eoln/iz",
+      "comment": "improve readability",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@eoln/iz",
+  "email": "2881004+eoln@users.noreply.github.com"
+}
