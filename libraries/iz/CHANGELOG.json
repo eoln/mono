@@ -2,6 +2,27 @@
   "name": "@eoln/iz",
   "entries": [
     {
+      "version": "1.2.0",
+      "tag": "@eoln/iz_v1.2.0",
+      "date": "Mon, 27 Jul 2020 12:57:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "chore: move coffeescript to devDependenices",
+            "author": "eoln <2881004+eoln@users.noreply.github.com>",
+            "commit": "f623ec91a8b121d98a7b4964b48867e92faaf422"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "fix iz homepage",
+            "author": "eoln <2881004+eoln@users.noreply.github.com>",
+            "commit": "c503f1dcb7da7f1df7faa14384ef1c7052137d24"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.9",
       "tag": "@eoln/iz_v1.0.9",
       "date": "Mon, 27 Jul 2020 12:03:56 GMT",
