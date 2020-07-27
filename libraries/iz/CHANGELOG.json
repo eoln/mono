@@ -2,6 +2,20 @@
   "name": "@eoln/iz",
   "entries": [
     {
+      "version": "1.2.1",
+      "tag": "@eoln/iz_v1.2.1",
+      "date": "Mon, 27 Jul 2020 14:16:25 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix travis skip, sync iz version with npm",
+            "author": "eoln <2881004+eoln@users.noreply.github.com>",
+            "commit": "823d47cd76c2e66ba4dd69e5af10f0038980e202"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.9",
       "tag": "@eoln/iz_v1.0.9",
       "date": "Mon, 27 Jul 2020 12:03:56 GMT",

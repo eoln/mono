@@ -1,6 +1,13 @@
 # Change Log - @eoln/iz
 
-This log was last generated on Mon, 27 Jul 2020 12:03:56 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jul 2020 14:16:25 GMT and should not be manually modified.
+
+## 1.2.1
+Mon, 27 Jul 2020 14:16:25 GMT
+
+### Patches
+
+- fix travis skip, sync iz version with npm
 
 ## 1.0.9
 Mon, 27 Jul 2020 12:03:56 GMT
