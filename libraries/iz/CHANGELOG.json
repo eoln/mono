@@ -2,6 +2,20 @@
   "name": "@eoln/iz",
   "entries": [
     {
+      "version": "1.0.9",
+      "tag": "@eoln/iz_v1.0.9",
+      "date": "Mon, 27 Jul 2020 12:03:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "doc: improve",
+            "author": "Paweł Marzec <2881004+eoln@users.noreply.github.com>",
+            "commit": "87c28a59e1d0938563c6c68bb511e025fa01ecd1"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.8",
       "tag": "@eoln/iz_v1.0.8",
       "date": "Mon, 27 Jul 2020 09:04:37 GMT",
