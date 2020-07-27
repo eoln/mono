@@ -1,6 +1,13 @@
 # Change Log - @eoln/iz
 
-This log was last generated on Mon, 27 Jul 2020 08:56:30 GMT and should not be manually modified.
+This log was last generated on Mon, 27 Jul 2020 08:58:40 GMT and should not be manually modified.
+
+## 1.0.8
+Mon, 27 Jul 2020 08:58:40 GMT
+
+### Patches
+
+- improve readability
 
 ## 1.0.7
 Mon, 27 Jul 2020 08:56:30 GMT
