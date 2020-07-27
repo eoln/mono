@@ -15,12 +15,11 @@
     "url": "https://github.com/eoln/mono/issues"
   },
   "homepage": "https://github.com/eoln/mono/libraries/is#readme",
-  "dependencies": {
-    "coffeescript": "^2.5.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "babel-jest": "^26.1.0",
+    "coffeescript": "^2.5.1",
     "jest": "^26.1.0"
   },
   "jest": {
