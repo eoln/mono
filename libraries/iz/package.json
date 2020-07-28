@@ -1,6 +1,6 @@
 {
   "name": "@eoln/iz",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "eoln's type recognition utility",
   "main": "dist/index.js",
   "scripts": {
@@ -15,7 +15,6 @@
     "url": "https://github.com/eoln/mono/issues"
   },
   "homepage": "https://github.com/eoln/mono/tree/master/libraries/iz",
-  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "babel-jest": "^26.1.0",
