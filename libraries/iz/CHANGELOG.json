@@ -2,6 +2,20 @@
   "name": "@eoln/iz",
   "entries": [
     {
+      "version": "1.2.5",
+      "tag": "@eoln/iz_v1.2.5",
+      "date": "Tue, 28 Jul 2020 17:29:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "enforce change",
+            "author": "eoln <2881004+eoln@users.noreply.github.com>",
+            "commit": "e6678de617c656e180446488a75c5ccfe67ea10e"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.4",
       "tag": "@eoln/iz_v1.2.4",
       "date": "Tue, 28 Jul 2020 16:16:23 GMT",
