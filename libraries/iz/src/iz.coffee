@@ -8,7 +8,7 @@ exports.name = ( x ) ->
     # x is function or instance
     x.constructor.name
 
-    
+
 #
 # registers type in scope by value or class function
 #
