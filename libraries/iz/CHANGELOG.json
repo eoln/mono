@@ -2,6 +2,20 @@
   "name": "@eoln/iz",
   "entries": [
     {
+      "version": "1.2.2",
+      "tag": "@eoln/iz_v1.2.2",
+      "date": "Tue, 28 Jul 2020 16:07:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix lint smells",
+            "author": "eoln <2881004+eoln@users.noreply.github.com>",
+            "commit": "f7818cb8e2ab0f4eb3d396e4b60b64dc944d7d47"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.1",
       "tag": "@eoln/iz_v1.2.1",
       "date": "Mon, 27 Jul 2020 14:16:25 GMT",

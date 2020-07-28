@@ -1,6 +1,13 @@
 # Change Log - @eoln/iz
 
-This log was last generated on Mon, 27 Jul 2020 14:16:25 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jul 2020 16:07:21 GMT and should not be manually modified.
+
+## 1.2.2
+Tue, 28 Jul 2020 16:07:21 GMT
+
+### Patches
+
+- fix lint smells
 
 ## 1.2.1
 Mon, 27 Jul 2020 14:16:25 GMT
