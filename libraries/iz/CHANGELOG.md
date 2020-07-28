@@ -1,6 +1,14 @@
 # Change Log - @eoln/iz
 
-This log was last generated on Tue, 28 Jul 2020 16:08:49 GMT and should not be manually modified.
+This log was last generated on Tue, 28 Jul 2020 16:16:23 GMT and should not be manually modified.
+
+## 1.2.4
+Tue, 28 Jul 2020 16:16:23 GMT
+
+### Patches
+
+- enforce change
+- try to fix package.json
 
 ## 1.2.2
 Tue, 28 Jul 2020 16:08:49 GMT

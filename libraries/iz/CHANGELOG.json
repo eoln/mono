@@ -2,6 +2,25 @@
   "name": "@eoln/iz",
   "entries": [
     {
+      "version": "1.2.4",
+      "tag": "@eoln/iz_v1.2.4",
+      "date": "Tue, 28 Jul 2020 16:16:23 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "enforce change",
+            "author": "Paweł Marzec <2881004+eoln@users.noreply.github.com>",
+            "commit": "1211a36f3c624cc107b09b356d47a75e14984e41"
+          },
+          {
+            "comment": "try to fix package.json",
+            "author": "Paweł Marzec <2881004+eoln@users.noreply.github.com>",
+            "commit": "92a586c8cc9c64115ddb6643ce9b7a7fde99aaf4"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.2",
       "tag": "@eoln/iz_v1.2.2",
       "date": "Tue, 28 Jul 2020 16:08:49 GMT",
