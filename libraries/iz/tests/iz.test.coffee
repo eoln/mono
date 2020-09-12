@@ -4,31 +4,41 @@ iz = require '../src/iz'
 describe 'iz', () ->
     # map from value to javascript native types
     js = [
-        { v: [],                t: 'Array' }
-        { v: Array,             t: 'Function' }
-        { v: true,              t: 'Boolean' }
-        { v: Boolean,           t: 'Function' }
-        { v: new Date(),        t: 'Date' }
-        { v: Date,              t: 'Function' }
-        { v: null,              t: 'Null' }
-        { v: 1.0,               t: 'Number' }
-        { v: 1,                 t: 'Number' }
-        { v: Number,            t: 'Function' }
-        { v: Promise.resolve(), t: 'Promise' }
-        { v: new Promise(->),   t: 'Promise' }
-        { v: Promise,           t: 'Function' }
-        { v: {},                t: 'Object' }
-        { v: new Object,        t: 'Object' }
-        { v: Object,            t: 'Function' }
-        { v: /./,               t: 'RegExp' }
-        { v: new RegExp('.'),   t: 'RegExp' }
-        { v: RegExp,            t: 'Function' }
-        { v: '',                t: 'String' }
-        { v: new String,        t: 'String' }
-        { v: String,            t: 'Function' }
-        { v: Symbol(),          t: 'Symbol' }
-        { v: Symbol,            t: 'Function' }
-        { v: undefined,         t: 'Undefined' }
+        { v: [],                                 t: 'Array' }
+        { v: Array,                              t: 'Function' }
+        { v: new ArrayBuffer(1),                 t: 'ArrayBuffer' }
+        { v: ArrayBuffer,                        t: 'Function' }
+        { v: BigInt(1),                          t: 'BigInt' }
+        { v: BigInt,                             t: 'Function' }
+        { v: new BigInt64Array,                  t: 'BigInt64Array' }
+        { v: BigInt64Array,                      t: 'Function' }
+        { v: true,                               t: 'Boolean' }
+        { v: Boolean,                            t: 'Function' }
+        { v: new DataView(new ArrayBuffer 1),    t: 'DataView' }
+        { v: DataView,                           t: 'Function' }
+        { v: new Date(),                         t: 'Date' }
+        { v: Date,                               t: 'Function' }
+        { v: null,                               t: 'Null' }
+        { v: 1.0,                                t: 'Number' }
+        { v: 1,                                  t: 'Number' }
+        { v: Number,                             t: 'Function' }
+        { v: Promise.resolve(),                  t: 'Promise' }
+        { v: new Promise(->),                    t: 'Promise' }
+        { v: Promise,                            t: 'Function' }
+        { v: {},                                 t: 'Object' }
+        { v: new Object,                         t: 'Object' }
+        { v: Object,                             t: 'Function' }
+        { v: /./,                                t: 'RegExp' }
+        { v: new RegExp('.'),                    t: 'RegExp' }
+        { v: RegExp,                             t: 'Function' }
+        { v: '',                                 t: 'String' }
+        { v: new Set,                            t: 'Set' }
+        { v: Set,                                t: 'Function' }
+        { v: new String,                         t: 'String' }
+        { v: String,                             t: 'Function' }
+        { v: Symbol(),                           t: 'Symbol' }
+        { v: Symbol,                             t: 'Function' }
+        { v: undefined,                          t: 'Undefined' }
     ]
     describe 'layout', () ->
         props = [
@@ -38,7 +48,11 @@ describe 'iz', () ->
 
             # registered native types
             'Array'
+            'ArrayBuffer'
+            'BigInt'
+            'BigInt64Array'
             'Boolean'
+            'DataView'
             'Date'
             'Function'
             'Null'
@@ -46,6 +60,7 @@ describe 'iz', () ->
             'Promise'
             'Object'
             'RegExp'
+            'Set'
             'String'
             'Symbol'
             'Undefined'

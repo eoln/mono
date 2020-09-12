@@ -26,7 +26,7 @@ exports.register = ( x, scope ) ->
         # throw when scope conflicts with js native types
         # below in this file the js native types are registered
         if @[scope]? and 'Function' is typeof @[scope]
-            throw new Error "@eoln/is.register: scope `#{scope}` conflicts"
+            throw new Error "@eoln/iz.register: scope `#{scope}` conflicts"
         
         # initialize scope with negation section
         root[scope] = { not: {} } unless root[scope]?
@@ -54,21 +54,28 @@ exports.not = {}
 
 
 #
-# js (native) values
+# js (native) objects
+# https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
 #
 jsValues = [
-    []                  # is.Array
-    true                # is.Boolean
-    new Date()          # is.Date
-    Date                # is.Function
-    null                # is.Null
-    1.0                 # is.Number
-    Promise.resolve()   # is.Promise
-    {}                  # is.Object
-    /./                 # is.RegExp
-    ''                  # is.String
-    Symbol()            # is.Symbol
-    undefined           # is.Undefined
+    []                              # iz.Array
+    new ArrayBuffer 1               # iz.ArrayBuffer
+    BigInt 1                        # iz.BigInt
+    new BigInt64Array               # iz.BigInt64Array
+    true                            # iz.Boolean
+    new DataView new ArrayBuffer 1  # iz.DataView
+    new Date                        # iz.Date
+    Date                            # iz.Function
+    new Map                         # iz.Map
+    null                            # iz.Null
+    1.0                             # iz.Number
+    Promise.resolve()               # iz.Promise
+    {}                              # iz.Object
+    /./                             # iz.RegExp
+    new Set                         # iz.Set
+    ''                              # iz.String
+    Symbol()                        # iz.Symbol
+    undefined                       # iz.Undefined
 ]
 
 
