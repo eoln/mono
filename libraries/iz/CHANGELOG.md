@@ -1,6 +1,13 @@
 # Change Log - @eoln/iz
 
-This log was last generated on Tue, 28 Jul 2020 17:29:12 GMT and should not be manually modified.
+This log was last generated on Sun, 13 Sep 2020 13:01:15 GMT and should not be manually modified.
+
+## 1.3.0
+Sun, 13 Sep 2020 13:01:15 GMT
+
+### Minor changes
+
+- register more native JS types
 
 ## 1.2.5
 Tue, 28 Jul 2020 17:29:12 GMT

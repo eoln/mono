@@ -2,6 +2,20 @@
   "name": "@eoln/iz",
   "entries": [
     {
+      "version": "1.3.0",
+      "tag": "@eoln/iz_v1.3.0",
+      "date": "Sun, 13 Sep 2020 13:01:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "register more native JS types",
+            "author": "Paweł Marzec <2881004+eoln@users.noreply.github.com>",
+            "commit": "f6902d2fe5f363b70fc3cd220addcc931108e4b4"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.2.5",
       "tag": "@eoln/iz_v1.2.5",
       "date": "Tue, 28 Jul 2020 17:29:12 GMT",
