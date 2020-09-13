@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@eoln/iz",
+      "comment": "register more native JS types",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@eoln/iz",
+  "email": "2881004+eoln@users.noreply.github.com"
+}
