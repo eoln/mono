@@ -1,7 +1,7 @@
 #
 # discover type name from instance/value
 #
-exports.name = ( x ) ->
+exports.name = (x) ->
     return 'Undefined' if typeof x == 'undefined'
     return 'Null' if x == null
 
@@ -12,7 +12,7 @@ exports.name = ( x ) ->
 #
 # registers type in scope by value or class function
 #
-exports.register = ( x, scope ) ->
+exports.register = (x, scope) ->
 
     # extract type's name
     nx = @name x
@@ -62,15 +62,28 @@ jsValues = [
     new ArrayBuffer 1               # iz.ArrayBuffer
     BigInt 1                        # iz.BigInt
     new BigInt64Array               # iz.BigInt64Array
+    new BigUint64Array              # iz.BigUint64Array
     true                            # iz.Boolean
     new DataView new ArrayBuffer 1  # iz.DataView
     new Date                        # iz.Date
-    Date                            # iz.Function
+    new Error                       # iz.Error
+    # node v13.0.0
+    # new FinalizationRegistry(() ->) # iz.FinalizationRegistry
+    new Float32Array                # iz.Float32Array
+    new Float64Array                # iz.Float64Array
+    () ->                           # iz.Function
+    # todo investigate Generator value
+    # (() -> yield 1)()             # iz.Generator
+    (() -> yield 1)                 # iz.GeneratorFunction
+    new Int16Array                  # iz.Int16Array
+    new Int32Array                  # iz.Int32Array
+    new Int8Array                   # iz.Int8Array
     new Map                         # iz.Map
     null                            # iz.Null
     1.0                             # iz.Number
-    Promise.resolve()               # iz.Promise
     {}                              # iz.Object
+    Promise.resolve()               # iz.Promise
+    new RangeError                  # iz.RangeError
     /./                             # iz.RegExp
     new Set                         # iz.Set
     ''                              # iz.String

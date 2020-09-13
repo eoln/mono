@@ -12,22 +12,43 @@ describe 'iz', () ->
         { v: BigInt,                             t: 'Function' }
         { v: new BigInt64Array,                  t: 'BigInt64Array' }
         { v: BigInt64Array,                      t: 'Function' }
+        { v: new BigUint64Array,                 t: 'BigUint64Array' }
+        { v: BigUint64Array,                     t: 'Function' }
         { v: true,                               t: 'Boolean' }
         { v: Boolean,                            t: 'Function' }
         { v: new DataView(new ArrayBuffer 1),    t: 'DataView' }
         { v: DataView,                           t: 'Function' }
-        { v: new Date(),                         t: 'Date' }
+        { v: new Date,                           t: 'Date' }
         { v: Date,                               t: 'Function' }
+        { v: new Error,                          t: 'Error' }
+        { v: Error,                              t: 'Function' }
+        # node v13.0.0
+        # { v: new FinalizationRegistry(() ->),    t: 'FinalizationRegistry' }
+        # { v: FinalizationRegistry,               t: 'Function' }
+        { v: new Float32Array,                   t: 'Float32Array' }
+        { v: Float32Array,                       t: 'Function' }
+        { v: new Float64Array,                   t: 'Float64Array' }
+        { v: Float64Array,                       t: 'Function' }
+        # todo: investigate Generator value
+        # { v: (() -> yield 1)(),                  t: 'Generator' }
+        { v: (() -> yield 1),                    t: 'GeneratorFunction' }
+        { v: new Int16Array,                     t: 'Int16Array' }
+        { v: Int16Array,                         t: 'Function' }
+        { v: new Int32Array,                     t: 'Int32Array' }
+        { v: Int32Array,                         t: 'Function' }
+        { v: new Int8Array,                      t: 'Int8Array' }
+        { v: Int8Array,                          t: 'Function' }
         { v: null,                               t: 'Null' }
         { v: 1.0,                                t: 'Number' }
         { v: 1,                                  t: 'Number' }
         { v: Number,                             t: 'Function' }
-        { v: Promise.resolve(),                  t: 'Promise' }
-        { v: new Promise(->),                    t: 'Promise' }
-        { v: Promise,                            t: 'Function' }
         { v: {},                                 t: 'Object' }
         { v: new Object,                         t: 'Object' }
         { v: Object,                             t: 'Function' }
+        { v: Promise.resolve(),                  t: 'Promise' }
+        { v: new Promise(->),                    t: 'Promise' }
+        { v: Promise,                            t: 'Function' }
+        { v: new RangeError,                     t: 'RangeError' }
         { v: /./,                                t: 'RegExp' }
         { v: new RegExp('.'),                    t: 'RegExp' }
         { v: RegExp,                             t: 'Function' }
@@ -51,14 +72,26 @@ describe 'iz', () ->
             'ArrayBuffer'
             'BigInt'
             'BigInt64Array'
+            'BigUint64Array'
             'Boolean'
             'DataView'
             'Date'
+            'Error'
+            # node v13.0.0
+            # 'FinalizationRegistry'
+            'Float32Array'
+            'Float64Array'
             'Function'
+            # 'Generator'
+            'GeneratorFunction'
+            'Int16Array'
+            'Int32Array'
+            'Int8Array'
             'Null'
             'Number'
-            'Promise'
             'Object'
+            'Promise'
+            'RangeError'
             'RegExp'
             'Set'
             'String'
