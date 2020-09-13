@@ -49,16 +49,41 @@ describe 'iz', () ->
         { v: new Promise(->),                    t: 'Promise' }
         { v: Promise,                            t: 'Function' }
         { v: new RangeError,                     t: 'RangeError' }
+        { v: RangeError,                         t: 'Function' }
+        { v: new ReferenceError,                 t: 'ReferenceError' }
+        { v: ReferenceError,                     t: 'Function' }
         { v: /./,                                t: 'RegExp' }
         { v: new RegExp('.'),                    t: 'RegExp' }
         { v: RegExp,                             t: 'Function' }
         { v: '',                                 t: 'String' }
         { v: new Set,                            t: 'Set' }
         { v: Set,                                t: 'Function' }
+        { v: new SharedArrayBuffer(1),           t: 'SharedArrayBuffer' }
+        { v: SharedArrayBuffer,                  t: 'Function' }
         { v: new String,                         t: 'String' }
         { v: String,                             t: 'Function' }
         { v: Symbol(),                           t: 'Symbol' }
         { v: Symbol,                             t: 'Function' }
+        { v: new SyntaxError,                    t: 'SyntaxError' }
+        { v: SyntaxError,                        t: 'Function' }
+        { v: new TypeError,                      t: 'TypeError' }
+        { v: TypeError,                          t: 'Function' }
+        { v: new URIError,                       t: 'URIError' }
+        { v: URIError,                           t: 'Function' }
+        { v: new Uint16Array(1),                 t: 'Uint16Array' }
+        { v: Uint16Array,                        t: 'Function' }
+        { v: new Uint32Array(1),                 t: 'Uint32Array' }
+        { v: Uint32Array,                        t: 'Function' }
+        { v: new Uint8Array(1),                  t: 'Uint8Array' }
+        { v: Uint8Array,                         t: 'Function' }
+        { v: new Uint8ClampedArray(1),           t: 'Uint8ClampedArray' }
+        { v: Uint8ClampedArray,                  t: 'Function' }
+        { v: new WeakMap,                        t: 'WeakMap' }
+        { v: WeakMap,                            t: 'Function' }
+        #{ v: new WeakRef,                        t: 'WeakRef' }
+        #{ v: WeakRef,                            t: 'Function' }
+        { v: new WeakSet,                        t: 'WeakSet' }
+        { v: WeakSet,                            t: 'Function' }
         { v: undefined,                          t: 'Undefined' }
     ]
     describe 'layout', () ->
@@ -94,8 +119,19 @@ describe 'iz', () ->
             'RangeError'
             'RegExp'
             'Set'
+            'SharedArrayBuffer'
             'String'
             'Symbol'
+            'SyntaxError'
+            'TypeError'
+            'URIError'
+            'Uint16Array'
+            'Uint32Array'
+            'Uint8Array'
+            'Uint8ClampedArray'
+            'WeakMap'
+            # 'WeakRef'
+            'WeakSet'
             'Undefined'
         ]
         # all props should be defined

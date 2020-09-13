@@ -84,10 +84,22 @@ jsValues = [
     {}                              # iz.Object
     Promise.resolve()               # iz.Promise
     new RangeError                  # iz.RangeError
+    new ReferenceError              # iz.ReferenceError
     /./                             # iz.RegExp
     new Set                         # iz.Set
+    new SharedArrayBuffer 1         # iz.SharedArrayBuffer
     ''                              # iz.String
     Symbol()                        # iz.Symbol
+    new SyntaxError                 # iz.SyntaxError
+    new TypeError                   # iz.TypeError
+    new URIError                    # iz.URIError
+    new Uint16Array 1               # iz.Uint16Array
+    new Uint32Array 1               # iz.Uint32Array
+    new Uint8Array 1                # iz.Uint8Array
+    new Uint8ClampedArray 1         # iz.Uint8ClampedArray
+    new WeakMap                     # iz.WeakMap
+    # new WeakRef                     # iz.WeakRef
+    new WeakSet                     # iz.WeakSet
     undefined                       # iz.Undefined
 ]
 
