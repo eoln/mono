@@ -1,0 +1,98 @@
+{
+  "name": "Telegram → GitHub Issue → Claude Code",
+  "description": "Receive a task description via Telegram, create a GitHub issue, and optionally trigger Claude Code to work on it.",
+  "nodes": [
+    {
+      "id": "telegram-trigger",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "position": [250, 300],
+      "parameters": {
+        "updates": ["message"],
+        "additionalFields": {}
+      },
+      "notes": "Listens for incoming Telegram messages. Configure with your bot token credential."
+    },
+    {
+      "id": "filter-command",
+      "type": "n8n-nodes-base.if",
+      "position": [450, 300],
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.message.text }}",
+              "operation": "startsWith",
+              "value2": "/task"
+            }
+          ]
+        }
+      },
+      "notes": "Only process messages starting with /task command"
+    },
+    {
+      "id": "parse-task",
+      "type": "n8n-nodes-base.code",
+      "position": [650, 200],
+      "parameters": {
+        "jsCode": "const text = $input.first().json.message.text;\nconst taskBody = text.replace(/^\\/task\\s*/, '');\nconst lines = taskBody.split('\\n');\nconst title = lines[0];\nconst body = lines.slice(1).join('\\n') || title;\n\nreturn [{\n  json: {\n    title: title,\n    body: body,\n    chatId: $input.first().json.message.chat.id,\n    messageId: $input.first().json.message.message_id\n  }\n}];"
+      },
+      "notes": "Parse the /task message. First line = issue title, rest = body."
+    },
+    {
+      "id": "create-github-issue",
+      "type": "n8n-nodes-base.github",
+      "position": [850, 200],
+      "parameters": {
+        "resource": "issue",
+        "operation": "create",
+        "owner": "eoln",
+        "repository": "mono",
+        "title": "={{ $json.title }}",
+        "body": "={{ $json.body }}\n\n---\n_Created via Telegram automation_",
+        "labels": ["automation", "telegram"]
+      },
+      "notes": "Creates a GitHub issue in eoln/mono. Requires GitHub OAuth credential."
+    },
+    {
+      "id": "notify-telegram",
+      "type": "n8n-nodes-base.telegram",
+      "position": [1050, 200],
+      "parameters": {
+        "chatId": "={{ $node['parse-task'].json.chatId }}",
+        "text": "={{ '✓ Issue #' + $json.number + ' created: ' + $json.html_url }}",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "notes": "Sends confirmation back to Telegram with issue link."
+    },
+    {
+      "id": "trigger-claude-code",
+      "type": "n8n-nodes-base.ssh",
+      "position": [1050, 400],
+      "parameters": {
+        "command": "={{ 'cd /home/user/mono && claude --print \"Work on GitHub issue #' + $json.number + ': ' + $node['parse-task'].json.title + '\" --allowedTools Bash,Read,Write,Edit,Glob,Grep' }}",
+        "cwd": "/home/user/mono"
+      },
+      "notes": "SSH into dev server and run Claude Code on the issue. Requires SSH credential. Optional — can be replaced with GitHub Actions trigger."
+    }
+  ],
+  "connections": {
+    "telegram-trigger": {
+      "main": [["filter-command"]]
+    },
+    "filter-command": {
+      "main": [["parse-task"], []]
+    },
+    "parse-task": {
+      "main": [["create-github-issue"]]
+    },
+    "create-github-issue": {
+      "main": [["notify-telegram", "trigger-claude-code"]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": ["telegram", "github", "claude-code", "automation"]
+}

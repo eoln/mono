@@ -1,0 +1,77 @@
+{
+  "name": "GitHub PR → Telegram Review Notification",
+  "description": "When Claude Code creates a PR, notify via Telegram with approve/request-changes buttons.",
+  "nodes": [
+    {
+      "id": "github-webhook",
+      "type": "n8n-nodes-base.githubTrigger",
+      "position": [250, 300],
+      "parameters": {
+        "owner": "eoln",
+        "repository": "mono",
+        "events": ["pull_request"]
+      },
+      "notes": "Triggers on PR events in eoln/mono."
+    },
+    {
+      "id": "filter-opened",
+      "type": "n8n-nodes-base.if",
+      "position": [450, 300],
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.action }}",
+              "operation": "equal",
+              "value2": "opened"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "format-message",
+      "type": "n8n-nodes-base.code",
+      "position": [650, 200],
+      "parameters": {
+        "jsCode": "const pr = $input.first().json.pull_request;\nconst msg = `🔀 <b>New PR #${pr.number}</b>\\n` +\n  `<b>${pr.title}</b>\\n\\n` +\n  `${pr.body ? pr.body.substring(0, 500) : 'No description'}\\n\\n` +\n  `Branch: <code>${pr.head.ref}</code> → <code>${pr.base.ref}</code>\\n` +\n  `Changed files: ${pr.changed_files}\\n` +\n  `<a href=\"${pr.html_url}\">View on GitHub</a>`;\n\nreturn [{ json: { message: msg, prUrl: pr.html_url, prNumber: pr.number } }];"
+      }
+    },
+    {
+      "id": "send-telegram",
+      "type": "n8n-nodes-base.telegram",
+      "position": [850, 200],
+      "parameters": {
+        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
+        "text": "={{ $json.message }}",
+        "additionalFields": {
+          "parse_mode": "HTML",
+          "reply_markup": {
+            "inline_keyboard": [
+              [
+                { "text": "Approve", "callback_data": "approve_{{ $json.prNumber }}" },
+                { "text": "View Diff", "url": "{{ $json.prUrl }}/files" }
+              ]
+            ]
+          }
+        }
+      },
+      "notes": "Sends PR details to Telegram with inline buttons."
+    }
+  ],
+  "connections": {
+    "github-webhook": {
+      "main": [["filter-opened"]]
+    },
+    "filter-opened": {
+      "main": [["format-message"], []]
+    },
+    "format-message": {
+      "main": [["send-telegram"]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": ["github", "telegram", "pr-review"]
+}

@@ -1,0 +1,78 @@
+{
+  "name": "ZenHub Sprint → Notion Board Sync",
+  "description": "Sync ZenHub sprint issues and pipeline changes to a Notion database for cross-team visibility.",
+  "nodes": [
+    {
+      "id": "schedule-trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [250, 300],
+      "parameters": {
+        "rule": {
+          "interval": [{ "field": "minutes", "minutesInterval": 15 }]
+        }
+      },
+      "notes": "Polls every 15 minutes. ZenHub has webhooks too — swap for webhook trigger if preferred."
+    },
+    {
+      "id": "fetch-zenhub-board",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [450, 300],
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.zenhub.com/p2/workspaces/{{ $env.ZENHUB_WORKSPACE_ID }}/repositories/{{ $env.GITHUB_REPO_ID }}/board",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "headerParameters": {
+          "parameters": [
+            { "name": "X-Authentication-Token", "value": "={{ $env.ZENHUB_API_TOKEN }}" }
+          ]
+        }
+      },
+      "notes": "Fetches current ZenHub board state. Requires ZENHUB_API_TOKEN env var."
+    },
+    {
+      "id": "transform-issues",
+      "type": "n8n-nodes-base.code",
+      "position": [650, 300],
+      "parameters": {
+        "jsCode": "const board = $input.first().json;\nconst issues = [];\n\nfor (const pipeline of board.pipelines) {\n  for (const issue of pipeline.issues) {\n    issues.push({\n      json: {\n        issueNumber: issue.issue_number,\n        pipeline: pipeline.name,\n        estimate: issue.estimate ? issue.estimate.value : null,\n        isEpic: issue.is_epic\n      }\n    });\n  }\n}\n\nreturn issues;"
+      },
+      "notes": "Flattens the board into individual issues with pipeline status."
+    },
+    {
+      "id": "upsert-notion",
+      "type": "n8n-nodes-base.notion",
+      "position": [850, 300],
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "upsert",
+        "databaseId": "={{ $env.NOTION_SPRINT_DB_ID }}",
+        "matchByProperty": "Issue Number",
+        "propertiesUi": {
+          "propertyValues": [
+            { "key": "Issue Number", "type": "number", "numberValue": "={{ $json.issueNumber }}" },
+            { "key": "Pipeline", "type": "select", "selectValue": "={{ $json.pipeline }}" },
+            { "key": "Estimate", "type": "number", "numberValue": "={{ $json.estimate }}" },
+            { "key": "Is Epic", "type": "checkbox", "checkboxValue": "={{ $json.isEpic }}" }
+          ]
+        }
+      },
+      "notes": "Upserts each issue into the Notion sprint database. Create a Notion DB with columns: Issue Number (number), Pipeline (select), Estimate (number), Is Epic (checkbox)."
+    }
+  ],
+  "connections": {
+    "schedule-trigger": {
+      "main": [["fetch-zenhub-board"]]
+    },
+    "fetch-zenhub-board": {
+      "main": [["transform-issues"]]
+    },
+    "transform-issues": {
+      "main": [["upsert-notion"]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": ["zenhub", "notion", "sprint-sync"]
+}

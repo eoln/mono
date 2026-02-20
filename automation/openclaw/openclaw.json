@@ -1,0 +1,90 @@
+{
+  "$schema": "https://docs.openclaw.ai/config-schema.json",
+  "name": "eoln-mono-agent",
+  "description": "OpenClaw agent for EOLN monorepo automated development",
+
+  "model": {
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-20250514",
+    "fallback": "claude-haiku-4-20250414"
+  },
+
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "botToken": "${TELEGRAM_BOT_TOKEN}",
+      "dmPolicy": "pairing",
+      "allowFrom": [],
+      "reactionLevel": "minimal",
+      "groupPolicy": "mention",
+      "groups": {}
+    }
+  },
+
+  "daemon": {
+    "enabled": true,
+    "startOnBoot": true
+  },
+
+  "memory": {
+    "enabled": true,
+    "provider": "local",
+    "contextWindow": 50
+  },
+
+  "skills": {
+    "directory": "./skills",
+    "autoload": true
+  },
+
+  "tools": {
+    "shell": {
+      "enabled": true,
+      "allowedCommands": [
+        "git *",
+        "rush *",
+        "npm test",
+        "npm run build",
+        "coffee *",
+        "claude --print *"
+      ],
+      "blockedCommands": [
+        "rm -rf /*",
+        "sudo *",
+        "shutdown *",
+        "reboot *"
+      ]
+    },
+    "filesystem": {
+      "enabled": true,
+      "allowedPaths": ["/home/user/mono"],
+      "blockedPaths": ["/home/user/mono/.env*"]
+    },
+    "web": {
+      "enabled": true
+    },
+    "github": {
+      "enabled": true,
+      "token": "${GITHUB_TOKEN}",
+      "defaultRepo": "eoln/mono"
+    }
+  },
+
+  "hooks": {
+    "onMessage": [],
+    "onTaskComplete": [
+      {
+        "action": "notify",
+        "channel": "telegram",
+        "template": "Task completed: {{task.summary}}"
+      }
+    ],
+    "onError": [
+      {
+        "action": "notify",
+        "channel": "telegram",
+        "template": "Error: {{error.message}}"
+      }
+    ]
+  }
+}
